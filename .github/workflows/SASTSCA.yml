@@ -15,9 +15,6 @@ jobs:
     - uses: actions/setup-go@v3
       with:
         go-version: '1.23'
-    - name: Build
-      run: |
-        go build init
 
     - name: Download Harness SAST and SCA CLI
       run: |
@@ -28,7 +25,6 @@ jobs:
         ${GITHUB_WORKSPACE}/sl --version
         ${GITHUB_WORKSPACE}/sl analyze --strict --wait \
           --app brew \
-          --tag branch=${{ github.head_ref }} \
-          --go $(pwd)
+          --tag branch=${{ github.head_ref }}
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
