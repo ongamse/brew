@@ -15,11 +15,7 @@ jobs:
     - uses: actions/setup-go@v3
       with:
         go-version: '1.23'
-    #- name: Build
-    #  run: |
-     #   go mod init \
-      #  go build ./...
-
+    
     - name: Download Harness SAST and SCA CLI
       run: |
         curl https://cdn.shiftleft.io/download/sl > ${GITHUB_WORKSPACE}/sl && chmod a+rx ${GITHUB_WORKSPACE}/sl
@@ -30,6 +26,5 @@ jobs:
         ${GITHUB_WORKSPACE}/sl analyze --strict --verbose --wait \
           --app brew \
           --tag branch=${{ github.head_ref }} \
-          --go $(pwd)
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
