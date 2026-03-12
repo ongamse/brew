@@ -26,5 +26,6 @@ jobs:
         ${GITHUB_WORKSPACE}/sl analyze --strict --verbose --wait \
           --app brew \
           --tag branch=${{ github.head_ref }} \
+          --go /opt/homebrew/bin/go
       env:
         SHIFTLEFT_ACCESS_TOKEN: ${{ secrets.SHIFTLEFT_ACCESS_TOKEN }}
