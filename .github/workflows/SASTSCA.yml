@@ -17,7 +17,7 @@ jobs:
         go-version: '1.23'
     - name: Build
       run: |
-        go build ./...
+        go build
 
     - name: Download Harness SAST and SCA CLI
       run: |
